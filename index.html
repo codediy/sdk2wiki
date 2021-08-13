@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name=”description” content="SDL2 SDLWiki">
+    <meta name=”keyword” content="SDL2 SDLWiki">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
@@ -28,7 +30,7 @@
     <div id="app" class="flex flec-row">
         <div class="p-5 api-container">
             <div>
-                <a :href="wikiePage" class="text-blue-400">wiki:{{wikiePage}}</a>   
+                <a :href="wikiePage" class="text-blue-400">wiki:{{wikiePage}}</a>
             </div>
             <div class="input-container m-2">
                 <input type="text" class="border border-gray-500 w-80 p-2" v-model="keyword" placeholder="请输入搜索内容"
@@ -169,14 +171,14 @@
                     if (this.currentApi == "apis") {
                         let temps = [];
                         Object.keys(this[this.currentApi]).forEach(k => {
-                            temps= temps.concat(this[this.currentApi][k]);
+                            temps = temps.concat(this[this.currentApi][k]);
                         })
-                        console.log("t",temps);
+                        console.log("t", temps);
                         this.searchResult = temps.filter(i => {
                             return i.page.toLowerCase().includes(this.keyword.toLowerCase())
                                 || i.title.toLowerCase().includes(this.keyword.toLowerCase())
                                 || i.file.toLowerCase().includes(this.keyword.toLowerCase())
-                        })    
+                        })
                     } else {
                         this.searchResult = this[this.currentApi].filter(i => {
                             return i.toLowerCase().includes(this.keyword.toLowerCase());
