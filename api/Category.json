@@ -1,0 +1,242 @@
+{
+  "Basics": [
+    {
+      "page": "CategoryInit",
+      "title": "Initialization and Shutdown",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL.h",
+      "file": "SDL.h"
+    },
+    {
+      "page": "CategoryHints",
+      "title": "Configuration Variables",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_hints.h",
+      "file": "SDL_hints.h"
+    },
+    {
+      "page": "CategoryError",
+      "title": "Error Handling",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_error.h",
+      "file": "SDL_error.h"
+    },
+    {
+      "page": "CategoryLog",
+      "title": "Log Handling",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_log.h",
+      "file": "SDL_log.h"
+    },
+    {
+      "page": "CategoryAssertions",
+      "title": "Assertions",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_assert.h",
+      "file": "SDL_assert.h"
+    },
+    {
+      "page": "CategoryVersion",
+      "title": "Querying SDL Version",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_version.h",
+      "file": "SDL_version.h"
+    }
+  ],
+  "Video": [
+    {
+      "page": "CategoryVideo",
+      "title": "Display and Window Management",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_video.h",
+      "file": "SDL_video.h"
+    },
+    {
+      "page": "CategoryRender",
+      "title": "2D Accelerated Rendering",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_render.h",
+      "file": "SDL_render.h"
+    },
+    {
+      "page": "CategoryPixels",
+      "title": "Pixel Formats and Conversion Routines",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_pixels.h",
+      "file": "SDL_pixels.h"
+    },
+    {
+      "page": "CategoryRect",
+      "title": "Rectangle Functions",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_rect.h",
+      "file": "SDL_rect.h"
+    },
+    {
+      "page": "CategorySurface",
+      "title": "Surface Creation and Simple Drawing",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_surface.h",
+      "file": "SDL_surface.h"
+    },
+    {
+      "page": "CategorySWM",
+      "title": "Platform-specific Window Management",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_syswm.h",
+      "file": "SDL_syswm.h"
+    },
+    {
+      "page": "CategoryClipboard",
+      "title": "Clipboard Handling",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_clipboard.h",
+      "file": "SDL_clipboard.h"
+    },
+    {
+      "page": "CategoryVulkan",
+      "title": "Vulkan Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_vulkan.h",
+      "file": "SDL_vulkan.h"
+    }
+  ],
+  "Input Events": [
+    {
+      "page": "CategoryEvents",
+      "title": "Event Handling",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_events.h",
+      "file": "SDL_events.h"
+    },
+    {
+      "page": "CategoryKeyboard",
+      "title": "Keyboard Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_keyboard.h",
+      "file": "SDL_keyboard.h"
+    },
+    {
+      "page": "CategoryMouse",
+      "title": "Mouse Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_mouse.h",
+      "file": "SDL_mouse.h"
+    },
+    {
+      "page": "CategoryJoystick",
+      "title": "Joystick Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_joystick.h",
+      "file": "SDL_joystick.h"
+    },
+    {
+      "page": "CategoryGameController",
+      "title": "Game Controller Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_gamecontroller.h",
+      "file": "SDL_gamecontroller.h"
+    },
+    {
+      "page": "CategorySensor",
+      "title": "Sensors",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_sensor.h",
+      "file": "SDL_sensor.h"
+    }
+  ],
+  "Force Feedback": [
+    {
+      "page": "CategoryForceFeedback",
+      "title": "Force Feedback Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_haptic.h",
+      "file": "SDL_haptic.h"
+    }
+  ],
+  "Audio": [
+    {
+      "page": "CategoryAudio",
+      "title": "Audio Device Management, Playing and Recording",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_audio.h",
+      "file": "SDL_audio.h"
+    }
+  ],
+  "Threads": [
+    {
+      "page": "CategoryThread",
+      "title": "Thread Management",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_thread.h",
+      "file": "SDL_thread.h"
+    },
+    {
+      "page": "CategoryMutex",
+      "title": "Thread Synchronization Primitives",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_mutex.h",
+      "file": "SDL_mutex.h"
+    },
+    {
+      "page": "CategoryAtomic",
+      "title": "Atomic Operations",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_atomic.h",
+      "file": "SDL_atomic.h"
+    }
+  ],
+  "Timers": [
+    {
+      "page": "CategoryTimer",
+      "title": "Timer Support",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_timer.h",
+      "file": "SDL_timer.h"
+    }
+  ],
+  "File Abstraction": [
+    {
+      "page": "CategoryFilesystem",
+      "title": "Filesystem Paths",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_filesystem.h",
+      "file": "SDL_filesystem.h"
+    },
+    {
+      "page": "CategoryIO",
+      "title": "File I/O Abstraction",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_rwops.h",
+      "file": "SDL_rwops.h"
+    }
+  ],
+  "Shared Object Support": [
+    {
+      "page": "CategorySharedObject",
+      "title": "Shared Object Loading and Function Lookup",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_loadso.h",
+      "file": "SDL_loadso.h"
+    }
+  ],
+  "Platform and CPU Information": [
+    {
+      "page": "CategoryPlatform",
+      "title": "Platform Detection",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_platform.h",
+      "file": "SDL_platform.h"
+    },
+    {
+      "page": "CategoryCPU",
+      "title": "CPU Feature Detection",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_cpuinfo.h",
+      "file": "SDL_cpuinfo.h"
+    },
+    {
+      "page": "CategoryEndian",
+      "title": "Byte Order and Byte Swapping",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_endian.h",
+      "file": "SDL_endian.h"
+    },
+    {
+      "page": "CategoryBits",
+      "title": "Bit Manipulation",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_bits.h",
+      "file": "SDL_bits.h"
+    }
+  ],
+  "Power Management": [
+    {
+      "page": "CategoryPower",
+      "title": "Power Management Status",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_power.h",
+      "file": "SDL_power.h"
+    }
+  ],
+  "Additional Functionality": [
+    {
+      "page": "CategorySystem",
+      "title": "Platform-specific Functionality",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_system.h",
+      "file": "SDL_system.h"
+    },
+    {
+      "page": "CategoryStandard",
+      "title": "Standard Library Functionality",
+      "link": "https://github.com/libsdl-org/SDL/blob/main/include/SDL_stdinc.h",
+      "file": "SDL_stdinc.h"
+    }
+  ]
+}

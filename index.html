@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/tailwindcss/2.2.7/tailwind.min.css" rel="stylesheet">
+    <title>SDLApi</title>
+    <style>
+        .api-container {
+            width: 30vw;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .frame-content {
+            width: 70vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="flex flec-row">
+        <div class="p-5 api-container">
+            <div>
+                <a :href="wikiePage" class="text-blue-400">wiki:{{wikiePage}}</a>   
+            </div>
+            <div class="input-container m-2">
+                <input type="text" class="border border-gray-500 w-80 p-2" v-model="keyword" placeholder="请输入搜索内容"
+                    @input="search">
+            </div>
+            <div class="flex flex-row mb-5">
+                <div @click="setApi('apis')"
+                    :class="{'bg-blue-400':currentApi == 'apis','bg-blue-200':currentApi != 'apis'}" class="p-2 mr-1">
+                    Api</div>
+                <div @click="setApi('functions')"
+                    :class="{'bg-blue-400':currentApi == 'functions','bg-blue-200':currentApi != 'functions'}"
+                    class="p-2 mr-1">函数(Function)</div>
+                <div @click="setApi('enums')"
+                    :class="{'bg-blue-400':currentApi == 'enums','bg-blue-200':currentApi != 'enums'}" class="p-2 mr-1">
+                    枚举值(Enum)</div>
+                <div @click="setApi('structs')"
+                    :class="{'bg-blue-400':currentApi == 'structs','bg-blue-200':currentApi != 'structs'}"
+                    class="p-2 mr-1">结构体(Struct)</div>
+            </div>
+
+            <div class="mt-5">
+                <!-- 分类 -->
+                <div v-if="searchResult.length == 0 &&  currentApi == 'apis'">
+                    <div v-for="(i,k) in apiData" :key="k">
+                        <div class="bg-indigo-400 w-max p-2">{{k}}</div>
+                        <div class="flex flex-row flex-wrap">
+                            <div v-for="(c,ck) in i" :key="ck" class="m-1 p-1 flex" @click="setPage(c.page)">
+                                <div class="bg-red-200 p-2">{{c.file}}</div>
+                                <div :class="{'bg-green-300':currentPage == c.page,'bg-blue-200':currentPage != c.page}"
+                                    class=" p-2 w-max">{{c.title}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="searchResult.length > 0 &&  currentApi == 'apis'">
+                    <div class="flex flex-row flex-wrap">
+                        <div v-for="(c,ck) in searchResult" :key="ck" class="m-1 p-1 flex" @click="setPage(c.page)">
+                            <div class="bg-red-200 p-2">{{c.file}}</div>
+                            <div :class="{'bg-green-300':currentPage == c.page,'bg-blue-200':currentPage != c.page}"
+                                class=" p-2 w-max">{{c.title}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 索引 -->
+                <div v-if="searchResult.length == 0 && currentApi != 'apis'" class="flex flex-row flex-wrap">
+                    <div v-for="(i,k) in apiData" :key="k">
+                        <div @click="setPage(i)"
+                            :class="{'bg-green-300':currentPage == i,'bg-blue-200':currentPage != i}"
+                            class="m-1 p-2 w-max">{{i}}</div>
+                    </div>
+                </div>
+
+                <div v-if="searchResult.length > 0 && currentApi != 'apis'" class="flex flex-row flex-wrap">
+                    <div v-for="(i,k) in searchResult" :key="k">
+                        <div @click="setPage(i)"
+                            :class="{'bg-green-300':currentPage == i,'bg-blue-200':currentPage != i}"
+                            class="m-1 p-2 w-max">{{i}}</div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <div class="wiki-content">
+            <iframe :src="wikiePage" frameborder="0" class="frame-content"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let option = {
+        el: "#app",
+        data: {
+            enums: [],
+            structs: [],
+            functions: [],
+            apis: [],
+
+            currentApi: "apis",
+            currentPage: "FrontPage",
+            defaultPage: "FrontPage",
+            wikiHost: "https://wiki.libsdl.org/",
+
+            keyword: "",
+            searchResult: [],
+        },
+        created() {
+            //加载数据
+            this.loadData();
+        },
+        computed: {
+            apiData() {
+                return this[this.currentApi];
+            },
+            wikiePage() {
+                return this.wikiHost + this.currentPage;
+            }
+        },
+        methods: {
+            loadData() {
+                let jsonFile = {
+                    "apis": "Category.json",
+                    "functions": "CategoryApi.json",
+                    "enums": "CategoryEnum.json",
+                    "structs": "CategoryStruct.json",
+                }
+                Object.keys(jsonFile).forEach(key => {
+                    axios.get("./api/" + jsonFile[key]).then(res => {
+                        console.log("api", res);
+                        this[key] = res.data;
+                    })
+                })
+            },
+            setApi(name) {
+                this.currentApi = name;
+                this.currentPage = this.defaultPage;
+                this.keyword = "";
+                this.searchResult = [];
+
+                // if (name == 'apis') {
+                //     this.setPage(this.apis["Basics"][0]["page"])
+                // } else {
+                //     this.setPage(this[name][0]);
+                // }
+            },
+            setPage(page) {
+                this.currentPage = page;
+            },
+            search() {
+                console.log("search", this.keyword);
+                this.searchResult = [];
+                if (this.keyword) {
+                    if (this.currentApi == "apis") {
+                        let temps = [];
+                        Object.keys(this[this.currentApi]).forEach(k => {
+                            temps= temps.concat(this[this.currentApi][k]);
+                        })
+                        console.log("t",temps);
+                        this.searchResult = temps.filter(i => {
+                            return i.page.toLowerCase().includes(this.keyword.toLowerCase())
+                                || i.title.toLowerCase().includes(this.keyword.toLowerCase())
+                                || i.file.toLowerCase().includes(this.keyword.toLowerCase())
+                        })    
+                    } else {
+                        this.searchResult = this[this.currentApi].filter(i => {
+                            return i.toLowerCase().includes(this.keyword.toLowerCase());
+                        })
+                    }
+                }
+            }
+        }
+    }
+    new Vue(option);
+</script>
